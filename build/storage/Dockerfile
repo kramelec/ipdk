@@ -10,7 +10,7 @@
 # This image is used to provide environment for spdk build and get it in the
 # form of spdk packages
 ################################################################################
-FROM fedora:36 AS base
+FROM fedora:37 AS base
 
 ARG HTTP_PROXY
 ARG HTTPS_PROXY
@@ -29,7 +29,7 @@ RUN chmod +x /install && /install
 # Contains installed SPDK from build_base rpm packages.
 # Does not contain dependencies required to build SPDK
 ################################################################################
-FROM fedora:36 AS spdk
+FROM fedora:37 AS spdk
 
 LABEL maintainer=spdk.io
 
@@ -113,7 +113,7 @@ ENTRYPOINT [ "/init" ]
 # It has to be placed into host (a vm for KVM case or physical host for IPU
 # case). It uses gRPC to expose this service.
 ################################################################################
-FROM fedora:36 AS host-target
+FROM fedora:37 AS host-target
 
 ARG HTTP_PROXY
 ARG HTTPS_PROXY
@@ -137,7 +137,7 @@ ENTRYPOINT [ "/init" ]
 ################################################################################
 # ipdk-unit-tests
 ################################################################################
-FROM fedora:36 AS ipdk-unit-tests
+FROM fedora:37 AS ipdk-unit-tests
 
 ARG HTTP_PROXY
 ARG HTTPS_PROXY
